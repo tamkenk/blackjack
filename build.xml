@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="jar" name="blackjack">
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<path id="blackjack.classpath">
+		<pathelement location="bin" />
+	</path>
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeAntRuntime="true" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="blackjack.classpath" />
+		</javac>
+	</target>
+	<target depends="build" name="jar">
+		<jar destfile="Blackjack.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="blackjack.Play" />
+			</manifest>
+		</jar>
+	</target>
+</project>

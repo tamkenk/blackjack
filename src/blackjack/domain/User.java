@@ -11,6 +11,7 @@ import blackjack.Util;
  *
  */
 public class User extends Player {
+	private static final int BLACKJACK = 21;
 	private Scanner userInput; 
 	
 	public User(Deck deck, Scanner userInput) {
@@ -24,15 +25,19 @@ public class User extends Player {
 	 */
 	@Override
 	public boolean draw() {
+		// check for blackjack before drawing
+		if ( BLACKJACK == this.getBestValue() ) {
+			System.out.printf("Your hand: %s, total value %d\n", this.displayHand(), this.getBestValue());
+			System.out.println("You have a blackjack hand!");
+			return true;
+		}
+		
 		boolean done = false;
 		while (! done) {
 			System.out.printf("Your hand: %s, total value %d\n", this.displayHand(), this.getBestValue());
 
 			if ( this.isBust() ) {
 				return false;
-			}
-			if ( this.isBlackjack() ) {
-				return true;
 			}
 						
 			String action = Util.getUserInput("Hit? (y<cr>) or n<cr>) ", userInput);			

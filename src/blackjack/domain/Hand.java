@@ -1,6 +1,7 @@
 package blackjack.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -56,10 +57,6 @@ public class Hand {
 	public int getAceCount() {
 		return aceCount;
 	}
-
-	public boolean isBlackjack() {
-		return ( TWENTY_ONE == getBestValue());
-	}
 	
 	public boolean isBust() {
 		return ( TWENTY_ONE < getBestValue());
@@ -67,6 +64,10 @@ public class Hand {
 	
 	public Card getCard(int index) {
 		return (index < hand.size()) ? hand.get(index) : null;
+	}
+	
+	public Iterator<Card> getAllCards() {
+		return hand.iterator();
 	}
 	
 	@Override

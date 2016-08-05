@@ -8,7 +8,7 @@ package blackjack.domain;
  * @author Ken Tam
  *
  */
-public class Card implements Comparable<Card> {
+public class Card {
 	private Suit suit;
 	private Rank rank;
 	
@@ -36,14 +36,5 @@ public class Card implements Comparable<Card> {
 	@Override
 	public String toString() {
 		return suit.getName() + ":" + rank.getName();
-	}
-
-	@Override
-	public int compareTo(Card c) {
-		if ( c.suit.getOrder() != this.suit.getOrder() ) {
-			return this.suit.getOrder() - c.suit.getOrder();
-		}
-
-		return this.getValue() - c.getValue();
 	}
 }

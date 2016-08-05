@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import java.util.Iterator;
+
 /**
  * Abstract class which provides common functions for player.
  * 
@@ -31,12 +33,15 @@ public abstract class Player {
 		return hand.isBust();
 	}
 	
-	public boolean isBlackjack() {
-		return hand.isBlackjack();
-	}
-	
 	public Card getCard(int index) {
 		return hand.getCard(index);
+	}
+	
+	public void returnCardsToDeck() {
+		for (Iterator<Card> iter = hand.getAllCards(); iter.hasNext();) {
+			Card card = iter.next();
+			deck.addToBottom(card);
+		}
 	}
 	
 	/**

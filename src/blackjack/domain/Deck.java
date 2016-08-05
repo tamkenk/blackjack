@@ -15,6 +15,10 @@ public class Deck {
 	//   more important, plus the total # of cards is small at 52
 	List<Card> cards = new LinkedList<Card>();
 
+	// Note: An Interface can be created for Deck to facilitate testing by
+	//			creating a MockDeck class to simulate hands instead of
+	//			the random deck in real game. Another option is to subclass
+	//			from this Deck class to override methods to simulate hands.
 	public Deck() {
 		// initialize cards 
 		for (Suit s: Suit.values()) {

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- using simple ant script because this project doesn't contain any external dependency -->
 <project basedir="." default="jar" name="blackjack">
 	<property environment="env" />
 	<property name="debuglevel" value="source,lines,vars" />
